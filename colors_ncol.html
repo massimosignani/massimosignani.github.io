@@ -1,0 +1,551 @@
+<head>
+
+<script src="https://www.w3schools.com/lib/w3color.js"></script>
+<link rel="stylesheet" href="./w3schools30.css">
+    
+<style>
+.colorinput {
+    width:105px;
+    padding:25px 0 15px 0;
+}
+.colorslider {
+    padding:30px 25px 15px 20px;
+}
+.tableslider {
+    width:100%;
+    border-collapse:collapse;
+}
+.pointer {
+    text-align:center;display:none;position:absolute;top:-14px;left:-2px;
+}
+.pointer div{
+    background-color:#ffffff;     
+    border:1px solid #aaaaaa;
+    height:24px;
+    width:40px;
+    padding:2px 4px;
+    position:absolute;
+    text-align:center;
+    top:-14px;
+    left:-15px;
+    color:#000000;   
+    border-radius:4px;
+    font:14px verdana;
+}
+.pointer div::selection {
+    color: #000000;
+    background: #ffffff;
+}
+.pointer i{
+    color:#aaaaaa
+}
+@media screen and (max-width:600px) {
+    .colorinput {
+        padding:25px 0 0 0;
+    }
+    .colorslider {
+        width:100%;
+        padding:30px 25px 15px 20px;
+    }
+}
+</style>
+    
+<script>
+function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}    
+function myvalue() {
+    var foo = getParameterByName('color'); 
+    var primo
+    var secondo
+    var terzo
+    const myArray = foo.split(", ");
+    
+    var primo = myArray[0]
+    var secondo = myArray[1] + '%' 
+    var terzo = myArray[2] + '%' 
+    foo = primo + ',' + secondo + ',' + terzo
+    //alert(foo)
+    document.getElementById('hwb01').value = foo
+    setFullColor()
+}  
+</script>
+</head>
+
+<body onload="myvalue()">
+
+
+<div class="w3-col l10 m12" id="main">
+
+<div class="w3-clear nextprev">
+<a class="w3-left w3-btn" href="colors_cmyk.html">❮ Previous</a>
+	<a class="w3-right w3-btn" href="colors_gradient.html">Next ❯</a>
+</div>
+<br>
+<div class="w3-container w3-padding-large ws-grey" style="border-radius:5px;">
+<h2>NCol Calculator</h2>
+<br>
+<div class="w3-row">
+<div class="w3-col m7" id="result01" style="background-color:hsl(0,100%,50%);height:200px"></div>
+<div class="w3-col m1">&nbsp;</div>
+<div class="w3-col m4">
+  <div class="w3-large" style="font-family:Consolas, 'courier new';bottom:10px;">
+    <input id="hwb01" type="text" class="w3-input w3-border" onchange="setFullColor()" onkeydown="submitOnEnter(event)">
+    <div id="rgb01" class="w3-margin-top">rgb(255, 0, 0)</div>      
+    <div id="hex01" class="w3-margin-top">#ff0000</div>
+    <div id="hsl01" class="w3-margin-top">hsl(0, 100%, 50%)</div>            
+  </div>
+</div>
+</div>
+<hr style="border-color:#d3d3d3" class="w3-hide-medium w3-hide-large">
+<br>
+<div class="w3-row">
+  <div class="w3-col colorinput">
+    <div style="width:30px;float:left;">H:</div>
+    <input type="text" style="padding-left:6px;width:70px;" id="hue01" oninput="setColor(this)" onchange="setColor(this)" value="R">
+    </div>
+  <div class="w3-rest colorslider">
+    <div id="huetable"><table class="tableslider"><tbody><tr><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerR" style="display: inline;"><div>R</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerR10" style="display: none;"><div>R10</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerR20" style="display: none;"><div>R20</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerR30" style="display: none;"><div>R30</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerR40" style="display: none;"><div>R40</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerR50" style="display: none;"><div>R50</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerR60" style="display: none;"><div>R60</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerR70" style="display: none;"><div>R70</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerR80" style="display: none;"><div>R80</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerR90" style="display: none;"><div>R90</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerY" style="display: none;"><div>Y</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerY10" style="display: none;"><div>Y10</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerY20" style="display: none;"><div>Y20</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerY30" style="display: none;"><div>Y30</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerY40" style="display: none;"><div>Y40</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerY50" style="display: none;"><div>Y50</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerY60" style="display: none;"><div>Y60</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerY70" style="display: none;"><div>Y70</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerY80" style="display: none;"><div>Y80</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerY90" style="display: none;"><div>Y90</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerG" style="display: none;"><div>G</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerG10" style="display: none;"><div>G10</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerG20" style="display: none;"><div>G20</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerG30" style="display: none;"><div>G30</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerG40" style="display: none;"><div>G40</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerG50" style="display: none;"><div>G50</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerG60" style="display: none;"><div>G60</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerG70" style="display: none;"><div>G70</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerG80" style="display: none;"><div>G80</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerG90" style="display: none;"><div>G90</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerC" style="display: none;"><div>C</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerC10" style="display: none;"><div>C10</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerC20" style="display: none;"><div>C20</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerC30" style="display: none;"><div>C30</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerC40" style="display: none;"><div>C40</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerC50" style="display: none;"><div>C50</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerC60" style="display: none;"><div>C60</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerC70" style="display: none;"><div>C70</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerC80" style="display: none;"><div>C80</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerC90" style="display: none;"><div>C90</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerB" style="display: none;"><div>B</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerB10" style="display: none;"><div>B10</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerB20" style="display: none;"><div>B20</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerB30" style="display: none;"><div>B30</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerB40" style="display: none;"><div>B40</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerB50" style="display: none;"><div>B50</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerB60" style="display: none;"><div>B60</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerB70" style="display: none;"><div>B70</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerB80" style="display: none;"><div>B80</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerB90" style="display: none;"><div>B90</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerM" style="display: none;"><div>M</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerM10" style="display: none;"><div>M10</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerM20" style="display: none;"><div>M20</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerM30" style="display: none;"><div>M30</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerM40" style="display: none;"><div>M40</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerM50" style="display: none;"><div>M50</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerM60" style="display: none;"><div>M60</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerM70" style="display: none;"><div>M70</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerM80" style="display: none;"><div>M80</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer hue" id="huepointerM90" style="display: none;"><div>M90</div><i class="fa fa-caret-down"></i></div></td></tr><tr><td style="height:22px;padding:0;background-color:hsl(0,100%,50%)" onmousemove="tooltip(0, &quot;R&quot;)" onclick="clickHue(&quot;R&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(6,100%,50%)" onmousemove="tooltip(0, &quot;R10&quot;)" onclick="clickHue(&quot;R10&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(12,100%,50%)" onmousemove="tooltip(0, &quot;R20&quot;)" onclick="clickHue(&quot;R20&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(18,100%,50%)" onmousemove="tooltip(0, &quot;R30&quot;)" onclick="clickHue(&quot;R30&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(24,100%,50%)" onmousemove="tooltip(0, &quot;R40&quot;)" onclick="clickHue(&quot;R40&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(30,100%,50%)" onmousemove="tooltip(0, &quot;R50&quot;)" onclick="clickHue(&quot;R50&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(36,100%,50%)" onmousemove="tooltip(0, &quot;R60&quot;)" onclick="clickHue(&quot;R60&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(42,100%,50%)" onmousemove="tooltip(0, &quot;R70&quot;)" onclick="clickHue(&quot;R70&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(48,100%,50%)" onmousemove="tooltip(0, &quot;R80&quot;)" onclick="clickHue(&quot;R80&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(54,100%,50%)" onmousemove="tooltip(0, &quot;R90&quot;)" onclick="clickHue(&quot;R90&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(60,100%,50%)" onmousemove="tooltip(0, &quot;Y&quot;)" onclick="clickHue(&quot;Y&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(66,100%,50%)" onmousemove="tooltip(0, &quot;Y10&quot;)" onclick="clickHue(&quot;Y10&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(72,100%,50%)" onmousemove="tooltip(0, &quot;Y20&quot;)" onclick="clickHue(&quot;Y20&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(78,100%,50%)" onmousemove="tooltip(0, &quot;Y30&quot;)" onclick="clickHue(&quot;Y30&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(84,100%,50%)" onmousemove="tooltip(0, &quot;Y40&quot;)" onclick="clickHue(&quot;Y40&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(90,100%,50%)" onmousemove="tooltip(0, &quot;Y50&quot;)" onclick="clickHue(&quot;Y50&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(96,100%,50%)" onmousemove="tooltip(0, &quot;Y60&quot;)" onclick="clickHue(&quot;Y60&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(102,100%,50%)" onmousemove="tooltip(0, &quot;Y70&quot;)" onclick="clickHue(&quot;Y70&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(108,100%,50%)" onmousemove="tooltip(0, &quot;Y80&quot;)" onclick="clickHue(&quot;Y80&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(114,100%,50%)" onmousemove="tooltip(0, &quot;Y90&quot;)" onclick="clickHue(&quot;Y90&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(120,100%,50%)" onmousemove="tooltip(0, &quot;G&quot;)" onclick="clickHue(&quot;G&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(126,100%,50%)" onmousemove="tooltip(0, &quot;G10&quot;)" onclick="clickHue(&quot;G10&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(132,100%,50%)" onmousemove="tooltip(0, &quot;G20&quot;)" onclick="clickHue(&quot;G20&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(138,100%,50%)" onmousemove="tooltip(0, &quot;G30&quot;)" onclick="clickHue(&quot;G30&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(144,100%,50%)" onmousemove="tooltip(0, &quot;G40&quot;)" onclick="clickHue(&quot;G40&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(150,100%,50%)" onmousemove="tooltip(0, &quot;G50&quot;)" onclick="clickHue(&quot;G50&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(156,100%,50%)" onmousemove="tooltip(0, &quot;G60&quot;)" onclick="clickHue(&quot;G60&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(162,100%,50%)" onmousemove="tooltip(0, &quot;G70&quot;)" onclick="clickHue(&quot;G70&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(168,100%,50%)" onmousemove="tooltip(0, &quot;G80&quot;)" onclick="clickHue(&quot;G80&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(174,100%,50%)" onmousemove="tooltip(0, &quot;G90&quot;)" onclick="clickHue(&quot;G90&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(180,100%,50%)" onmousemove="tooltip(0, &quot;C&quot;)" onclick="clickHue(&quot;C&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(186,100%,50%)" onmousemove="tooltip(0, &quot;C10&quot;)" onclick="clickHue(&quot;C10&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(192,100%,50%)" onmousemove="tooltip(0, &quot;C20&quot;)" onclick="clickHue(&quot;C20&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(198,100%,50%)" onmousemove="tooltip(0, &quot;C30&quot;)" onclick="clickHue(&quot;C30&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(204,100%,50%)" onmousemove="tooltip(0, &quot;C40&quot;)" onclick="clickHue(&quot;C40&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(210,100%,50%)" onmousemove="tooltip(0, &quot;C50&quot;)" onclick="clickHue(&quot;C50&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(216,100%,50%)" onmousemove="tooltip(0, &quot;C60&quot;)" onclick="clickHue(&quot;C60&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(222,100%,50%)" onmousemove="tooltip(0, &quot;C70&quot;)" onclick="clickHue(&quot;C70&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(228,100%,50%)" onmousemove="tooltip(0, &quot;C80&quot;)" onclick="clickHue(&quot;C80&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(234,100%,50%)" onmousemove="tooltip(0, &quot;C90&quot;)" onclick="clickHue(&quot;C90&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(240,100%,50%)" onmousemove="tooltip(0, &quot;B&quot;)" onclick="clickHue(&quot;B&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(246,100%,50%)" onmousemove="tooltip(0, &quot;B10&quot;)" onclick="clickHue(&quot;B10&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(252,100%,50%)" onmousemove="tooltip(0, &quot;B20&quot;)" onclick="clickHue(&quot;B20&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(258,100%,50%)" onmousemove="tooltip(0, &quot;B30&quot;)" onclick="clickHue(&quot;B30&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(264,100%,50%)" onmousemove="tooltip(0, &quot;B40&quot;)" onclick="clickHue(&quot;B40&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(270,100%,50%)" onmousemove="tooltip(0, &quot;B50&quot;)" onclick="clickHue(&quot;B50&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(276,100%,50%)" onmousemove="tooltip(0, &quot;B60&quot;)" onclick="clickHue(&quot;B60&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(282,100%,50%)" onmousemove="tooltip(0, &quot;B70&quot;)" onclick="clickHue(&quot;B70&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(288,100%,50%)" onmousemove="tooltip(0, &quot;B80&quot;)" onclick="clickHue(&quot;B80&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(294,100%,50%)" onmousemove="tooltip(0, &quot;B90&quot;)" onclick="clickHue(&quot;B90&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(300,100%,50%)" onmousemove="tooltip(0, &quot;M&quot;)" onclick="clickHue(&quot;M&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(306,100%,50%)" onmousemove="tooltip(0, &quot;M10&quot;)" onclick="clickHue(&quot;M10&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(312,100%,50%)" onmousemove="tooltip(0, &quot;M20&quot;)" onclick="clickHue(&quot;M20&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(318,100%,50%)" onmousemove="tooltip(0, &quot;M30&quot;)" onclick="clickHue(&quot;M30&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(324,100%,50%)" onmousemove="tooltip(0, &quot;M40&quot;)" onclick="clickHue(&quot;M40&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(330,100%,50%)" onmousemove="tooltip(0, &quot;M50&quot;)" onclick="clickHue(&quot;M50&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(336,100%,50%)" onmousemove="tooltip(0, &quot;M60&quot;)" onclick="clickHue(&quot;M60&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(342,100%,50%)" onmousemove="tooltip(0, &quot;M70&quot;)" onclick="clickHue(&quot;M70&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(348,100%,50%)" onmousemove="tooltip(0, &quot;M80&quot;)" onclick="clickHue(&quot;M80&quot;)"></td><td style="height:22px;padding:0;background-color:hsl(354,100%,50%)" onmousemove="tooltip(0, &quot;M90&quot;)" onclick="clickHue(&quot;M90&quot;)"></td></tr></tbody></table></div>
+  </div>
+</div>
+<div class="w3-row">
+  <div class="w3-col colorinput">
+    <div style="width:30px;float:left;">W:</div>
+    <input type="number" style="padding-left:6px;width:70px;" id="white01" oninput="setColor(this)" onchange="setColor(this)" value="0">
+  </div>
+  <div class="w3-rest colorslider">
+    <div id="whitetable"><table class="tableslider"><tbody><tr><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer0" style="display: inline;"><div>0</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer1" style="display: none;"><div>1</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer2" style="display: none;"><div>2</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer3" style="display: none;"><div>3</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer4" style="display: none;"><div>4</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer5" style="display: none;"><div>5</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer6" style="display: none;"><div>6</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer7" style="display: none;"><div>7</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer8" style="display: none;"><div>8</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer9" style="display: none;"><div>9</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer10" style="display: none;"><div>10</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer11" style="display: none;"><div>11</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer12" style="display: none;"><div>12</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer13" style="display: none;"><div>13</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer14" style="display: none;"><div>14</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer15" style="display: none;"><div>15</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer16" style="display: none;"><div>16</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer17" style="display: none;"><div>17</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer18" style="display: none;"><div>18</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer19" style="display: none;"><div>19</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer20" style="display: none;"><div>20</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer21" style="display: none;"><div>21</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer22" style="display: none;"><div>22</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer23" style="display: none;"><div>23</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer24" style="display: none;"><div>24</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer25" style="display: none;"><div>25</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer26" style="display: none;"><div>26</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer27" style="display: none;"><div>27</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer28" style="display: none;"><div>28</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer29" style="display: none;"><div>29</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer30" style="display: none;"><div>30</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer31" style="display: none;"><div>31</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer32" style="display: none;"><div>32</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer33" style="display: none;"><div>33</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer34" style="display: none;"><div>34</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer35" style="display: none;"><div>35</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer36" style="display: none;"><div>36</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer37" style="display: none;"><div>37</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer38" style="display: none;"><div>38</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer39" style="display: none;"><div>39</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer40" style="display: none;"><div>40</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer41" style="display: none;"><div>41</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer42" style="display: none;"><div>42</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer43" style="display: none;"><div>43</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer44" style="display: none;"><div>44</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer45" style="display: none;"><div>45</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer46" style="display: none;"><div>46</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer47" style="display: none;"><div>47</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer48" style="display: none;"><div>48</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer49" style="display: none;"><div>49</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer50" style="display: none;"><div>50</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer51" style="display: none;"><div>51</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer52" style="display: none;"><div>52</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer53" style="display: none;"><div>53</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer54" style="display: none;"><div>54</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer55" style="display: none;"><div>55</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer56" style="display: none;"><div>56</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer57" style="display: none;"><div>57</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer58" style="display: none;"><div>58</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer59" style="display: none;"><div>59</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer60" style="display: none;"><div>60</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer61" style="display: none;"><div>61</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer62" style="display: none;"><div>62</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer63" style="display: none;"><div>63</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer64" style="display: none;"><div>64</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer65" style="display: none;"><div>65</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer66" style="display: none;"><div>66</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer67" style="display: none;"><div>67</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer68" style="display: none;"><div>68</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer69" style="display: none;"><div>69</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer70" style="display: none;"><div>70</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer71" style="display: none;"><div>71</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer72" style="display: none;"><div>72</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer73" style="display: none;"><div>73</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer74" style="display: none;"><div>74</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer75" style="display: none;"><div>75</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer76" style="display: none;"><div>76</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer77" style="display: none;"><div>77</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer78" style="display: none;"><div>78</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer79" style="display: none;"><div>79</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer80" style="display: none;"><div>80</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer81" style="display: none;"><div>81</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer82" style="display: none;"><div>82</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer83" style="display: none;"><div>83</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer84" style="display: none;"><div>84</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer85" style="display: none;"><div>85</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer86" style="display: none;"><div>86</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer87" style="display: none;"><div>87</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer88" style="display: none;"><div>88</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer89" style="display: none;"><div>89</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer90" style="display: none;"><div>90</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer91" style="display: none;"><div>91</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer92" style="display: none;"><div>92</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer93" style="display: none;"><div>93</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer94" style="display: none;"><div>94</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer95" style="display: none;"><div>95</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer96" style="display: none;"><div>96</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer97" style="display: none;"><div>97</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer98" style="display: none;"><div>98</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer99" style="display: none;"><div>99</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="whitepointer100" style="display: none;"><div>100</div><i class="fa fa-caret-down"></i></div></td></tr><tr><td style="padding:0;height:22px;background-color:rgb(255, 0, 0)" onmousemove="tooltip(1, 0)" onclick="clickWhite(0)"></td><td style="padding:0;height:22px;background-color:rgb(255, 3, 3)" onmousemove="tooltip(1, 1)" onclick="clickWhite(1)"></td><td style="padding:0;height:22px;background-color:rgb(255, 5, 5)" onmousemove="tooltip(1, 2)" onclick="clickWhite(2)"></td><td style="padding:0;height:22px;background-color:rgb(255, 8, 8)" onmousemove="tooltip(1, 3)" onclick="clickWhite(3)"></td><td style="padding:0;height:22px;background-color:rgb(255, 10, 10)" onmousemove="tooltip(1, 4)" onclick="clickWhite(4)"></td><td style="padding:0;height:22px;background-color:rgb(255, 13, 13)" onmousemove="tooltip(1, 5)" onclick="clickWhite(5)"></td><td style="padding:0;height:22px;background-color:rgb(255, 15, 15)" onmousemove="tooltip(1, 6)" onclick="clickWhite(6)"></td><td style="padding:0;height:22px;background-color:rgb(255, 18, 18)" onmousemove="tooltip(1, 7)" onclick="clickWhite(7)"></td><td style="padding:0;height:22px;background-color:rgb(255, 20, 20)" onmousemove="tooltip(1, 8)" onclick="clickWhite(8)"></td><td style="padding:0;height:22px;background-color:rgb(255, 23, 23)" onmousemove="tooltip(1, 9)" onclick="clickWhite(9)"></td><td style="padding:0;height:22px;background-color:rgb(255, 26, 26)" onmousemove="tooltip(1, 10)" onclick="clickWhite(10)"></td><td style="padding:0;height:22px;background-color:rgb(255, 28, 28)" onmousemove="tooltip(1, 11)" onclick="clickWhite(11)"></td><td style="padding:0;height:22px;background-color:rgb(255, 31, 31)" onmousemove="tooltip(1, 12)" onclick="clickWhite(12)"></td><td style="padding:0;height:22px;background-color:rgb(255, 33, 33)" onmousemove="tooltip(1, 13)" onclick="clickWhite(13)"></td><td style="padding:0;height:22px;background-color:rgb(255, 36, 36)" onmousemove="tooltip(1, 14)" onclick="clickWhite(14)"></td><td style="padding:0;height:22px;background-color:rgb(255, 38, 38)" onmousemove="tooltip(1, 15)" onclick="clickWhite(15)"></td><td style="padding:0;height:22px;background-color:rgb(255, 41, 41)" onmousemove="tooltip(1, 16)" onclick="clickWhite(16)"></td><td style="padding:0;height:22px;background-color:rgb(255, 43, 43)" onmousemove="tooltip(1, 17)" onclick="clickWhite(17)"></td><td style="padding:0;height:22px;background-color:rgb(255, 46, 46)" onmousemove="tooltip(1, 18)" onclick="clickWhite(18)"></td><td style="padding:0;height:22px;background-color:rgb(255, 48, 48)" onmousemove="tooltip(1, 19)" onclick="clickWhite(19)"></td><td style="padding:0;height:22px;background-color:rgb(255, 51, 51)" onmousemove="tooltip(1, 20)" onclick="clickWhite(20)"></td><td style="padding:0;height:22px;background-color:rgb(255, 54, 54)" onmousemove="tooltip(1, 21)" onclick="clickWhite(21)"></td><td style="padding:0;height:22px;background-color:rgb(255, 56, 56)" onmousemove="tooltip(1, 22)" onclick="clickWhite(22)"></td><td style="padding:0;height:22px;background-color:rgb(255, 59, 59)" onmousemove="tooltip(1, 23)" onclick="clickWhite(23)"></td><td style="padding:0;height:22px;background-color:rgb(255, 61, 61)" onmousemove="tooltip(1, 24)" onclick="clickWhite(24)"></td><td style="padding:0;height:22px;background-color:rgb(255, 64, 64)" onmousemove="tooltip(1, 25)" onclick="clickWhite(25)"></td><td style="padding:0;height:22px;background-color:rgb(255, 66, 66)" onmousemove="tooltip(1, 26)" onclick="clickWhite(26)"></td><td style="padding:0;height:22px;background-color:rgb(255, 69, 69)" onmousemove="tooltip(1, 27)" onclick="clickWhite(27)"></td><td style="padding:0;height:22px;background-color:rgb(255, 71, 71)" onmousemove="tooltip(1, 28)" onclick="clickWhite(28)"></td><td style="padding:0;height:22px;background-color:rgb(255, 74, 74)" onmousemove="tooltip(1, 29)" onclick="clickWhite(29)"></td><td style="padding:0;height:22px;background-color:rgb(255, 77, 77)" onmousemove="tooltip(1, 30)" onclick="clickWhite(30)"></td><td style="padding:0;height:22px;background-color:rgb(255, 79, 79)" onmousemove="tooltip(1, 31)" onclick="clickWhite(31)"></td><td style="padding:0;height:22px;background-color:rgb(255, 82, 82)" onmousemove="tooltip(1, 32)" onclick="clickWhite(32)"></td><td style="padding:0;height:22px;background-color:rgb(255, 84, 84)" onmousemove="tooltip(1, 33)" onclick="clickWhite(33)"></td><td style="padding:0;height:22px;background-color:rgb(255, 87, 87)" onmousemove="tooltip(1, 34)" onclick="clickWhite(34)"></td><td style="padding:0;height:22px;background-color:rgb(255, 89, 89)" onmousemove="tooltip(1, 35)" onclick="clickWhite(35)"></td><td style="padding:0;height:22px;background-color:rgb(255, 92, 92)" onmousemove="tooltip(1, 36)" onclick="clickWhite(36)"></td><td style="padding:0;height:22px;background-color:rgb(255, 94, 94)" onmousemove="tooltip(1, 37)" onclick="clickWhite(37)"></td><td style="padding:0;height:22px;background-color:rgb(255, 97, 97)" onmousemove="tooltip(1, 38)" onclick="clickWhite(38)"></td><td style="padding:0;height:22px;background-color:rgb(255, 99, 99)" onmousemove="tooltip(1, 39)" onclick="clickWhite(39)"></td><td style="padding:0;height:22px;background-color:rgb(255, 102, 102)" onmousemove="tooltip(1, 40)" onclick="clickWhite(40)"></td><td style="padding:0;height:22px;background-color:rgb(255, 105, 105)" onmousemove="tooltip(1, 41)" onclick="clickWhite(41)"></td><td style="padding:0;height:22px;background-color:rgb(255, 107, 107)" onmousemove="tooltip(1, 42)" onclick="clickWhite(42)"></td><td style="padding:0;height:22px;background-color:rgb(255, 110, 110)" onmousemove="tooltip(1, 43)" onclick="clickWhite(43)"></td><td style="padding:0;height:22px;background-color:rgb(255, 112, 112)" onmousemove="tooltip(1, 44)" onclick="clickWhite(44)"></td><td style="padding:0;height:22px;background-color:rgb(255, 115, 115)" onmousemove="tooltip(1, 45)" onclick="clickWhite(45)"></td><td style="padding:0;height:22px;background-color:rgb(255, 117, 117)" onmousemove="tooltip(1, 46)" onclick="clickWhite(46)"></td><td style="padding:0;height:22px;background-color:rgb(255, 120, 120)" onmousemove="tooltip(1, 47)" onclick="clickWhite(47)"></td><td style="padding:0;height:22px;background-color:rgb(255, 122, 122)" onmousemove="tooltip(1, 48)" onclick="clickWhite(48)"></td><td style="padding:0;height:22px;background-color:rgb(255, 125, 125)" onmousemove="tooltip(1, 49)" onclick="clickWhite(49)"></td><td style="padding:0;height:22px;background-color:rgb(255, 128, 128)" onmousemove="tooltip(1, 50)" onclick="clickWhite(50)"></td><td style="padding:0;height:22px;background-color:rgb(255, 130, 130)" onmousemove="tooltip(1, 51)" onclick="clickWhite(51)"></td><td style="padding:0;height:22px;background-color:rgb(255, 133, 133)" onmousemove="tooltip(1, 52)" onclick="clickWhite(52)"></td><td style="padding:0;height:22px;background-color:rgb(255, 135, 135)" onmousemove="tooltip(1, 53)" onclick="clickWhite(53)"></td><td style="padding:0;height:22px;background-color:rgb(255, 138, 138)" onmousemove="tooltip(1, 54)" onclick="clickWhite(54)"></td><td style="padding:0;height:22px;background-color:rgb(255, 140, 140)" onmousemove="tooltip(1, 55)" onclick="clickWhite(55)"></td><td style="padding:0;height:22px;background-color:rgb(255, 143, 143)" onmousemove="tooltip(1, 56)" onclick="clickWhite(56)"></td><td style="padding:0;height:22px;background-color:rgb(255, 145, 145)" onmousemove="tooltip(1, 57)" onclick="clickWhite(57)"></td><td style="padding:0;height:22px;background-color:rgb(255, 148, 148)" onmousemove="tooltip(1, 58)" onclick="clickWhite(58)"></td><td style="padding:0;height:22px;background-color:rgb(255, 150, 150)" onmousemove="tooltip(1, 59)" onclick="clickWhite(59)"></td><td style="padding:0;height:22px;background-color:rgb(255, 153, 153)" onmousemove="tooltip(1, 60)" onclick="clickWhite(60)"></td><td style="padding:0;height:22px;background-color:rgb(255, 156, 156)" onmousemove="tooltip(1, 61)" onclick="clickWhite(61)"></td><td style="padding:0;height:22px;background-color:rgb(255, 158, 158)" onmousemove="tooltip(1, 62)" onclick="clickWhite(62)"></td><td style="padding:0;height:22px;background-color:rgb(255, 161, 161)" onmousemove="tooltip(1, 63)" onclick="clickWhite(63)"></td><td style="padding:0;height:22px;background-color:rgb(255, 163, 163)" onmousemove="tooltip(1, 64)" onclick="clickWhite(64)"></td><td style="padding:0;height:22px;background-color:rgb(255, 166, 166)" onmousemove="tooltip(1, 65)" onclick="clickWhite(65)"></td><td style="padding:0;height:22px;background-color:rgb(255, 168, 168)" onmousemove="tooltip(1, 66)" onclick="clickWhite(66)"></td><td style="padding:0;height:22px;background-color:rgb(255, 171, 171)" onmousemove="tooltip(1, 67)" onclick="clickWhite(67)"></td><td style="padding:0;height:22px;background-color:rgb(255, 173, 173)" onmousemove="tooltip(1, 68)" onclick="clickWhite(68)"></td><td style="padding:0;height:22px;background-color:rgb(255, 176, 176)" onmousemove="tooltip(1, 69)" onclick="clickWhite(69)"></td><td style="padding:0;height:22px;background-color:rgb(255, 179, 179)" onmousemove="tooltip(1, 70)" onclick="clickWhite(70)"></td><td style="padding:0;height:22px;background-color:rgb(255, 181, 181)" onmousemove="tooltip(1, 71)" onclick="clickWhite(71)"></td><td style="padding:0;height:22px;background-color:rgb(255, 184, 184)" onmousemove="tooltip(1, 72)" onclick="clickWhite(72)"></td><td style="padding:0;height:22px;background-color:rgb(255, 186, 186)" onmousemove="tooltip(1, 73)" onclick="clickWhite(73)"></td><td style="padding:0;height:22px;background-color:rgb(255, 189, 189)" onmousemove="tooltip(1, 74)" onclick="clickWhite(74)"></td><td style="padding:0;height:22px;background-color:rgb(255, 191, 191)" onmousemove="tooltip(1, 75)" onclick="clickWhite(75)"></td><td style="padding:0;height:22px;background-color:rgb(255, 194, 194)" onmousemove="tooltip(1, 76)" onclick="clickWhite(76)"></td><td style="padding:0;height:22px;background-color:rgb(255, 196, 196)" onmousemove="tooltip(1, 77)" onclick="clickWhite(77)"></td><td style="padding:0;height:22px;background-color:rgb(255, 199, 199)" onmousemove="tooltip(1, 78)" onclick="clickWhite(78)"></td><td style="padding:0;height:22px;background-color:rgb(255, 201, 201)" onmousemove="tooltip(1, 79)" onclick="clickWhite(79)"></td><td style="padding:0;height:22px;background-color:rgb(255, 204, 204)" onmousemove="tooltip(1, 80)" onclick="clickWhite(80)"></td><td style="padding:0;height:22px;background-color:rgb(255, 207, 207)" onmousemove="tooltip(1, 81)" onclick="clickWhite(81)"></td><td style="padding:0;height:22px;background-color:rgb(255, 209, 209)" onmousemove="tooltip(1, 82)" onclick="clickWhite(82)"></td><td style="padding:0;height:22px;background-color:rgb(255, 212, 212)" onmousemove="tooltip(1, 83)" onclick="clickWhite(83)"></td><td style="padding:0;height:22px;background-color:rgb(255, 214, 214)" onmousemove="tooltip(1, 84)" onclick="clickWhite(84)"></td><td style="padding:0;height:22px;background-color:rgb(255, 217, 217)" onmousemove="tooltip(1, 85)" onclick="clickWhite(85)"></td><td style="padding:0;height:22px;background-color:rgb(255, 219, 219)" onmousemove="tooltip(1, 86)" onclick="clickWhite(86)"></td><td style="padding:0;height:22px;background-color:rgb(255, 222, 222)" onmousemove="tooltip(1, 87)" onclick="clickWhite(87)"></td><td style="padding:0;height:22px;background-color:rgb(255, 224, 224)" onmousemove="tooltip(1, 88)" onclick="clickWhite(88)"></td><td style="padding:0;height:22px;background-color:rgb(255, 227, 227)" onmousemove="tooltip(1, 89)" onclick="clickWhite(89)"></td><td style="padding:0;height:22px;background-color:rgb(255, 230, 230)" onmousemove="tooltip(1, 90)" onclick="clickWhite(90)"></td><td style="padding:0;height:22px;background-color:rgb(255, 232, 232)" onmousemove="tooltip(1, 91)" onclick="clickWhite(91)"></td><td style="padding:0;height:22px;background-color:rgb(255, 235, 235)" onmousemove="tooltip(1, 92)" onclick="clickWhite(92)"></td><td style="padding:0;height:22px;background-color:rgb(255, 237, 237)" onmousemove="tooltip(1, 93)" onclick="clickWhite(93)"></td><td style="padding:0;height:22px;background-color:rgb(255, 240, 240)" onmousemove="tooltip(1, 94)" onclick="clickWhite(94)"></td><td style="padding:0;height:22px;background-color:rgb(255, 242, 242)" onmousemove="tooltip(1, 95)" onclick="clickWhite(95)"></td><td style="padding:0;height:22px;background-color:rgb(255, 245, 245)" onmousemove="tooltip(1, 96)" onclick="clickWhite(96)"></td><td style="padding:0;height:22px;background-color:rgb(255, 247, 247)" onmousemove="tooltip(1, 97)" onclick="clickWhite(97)"></td><td style="padding:0;height:22px;background-color:rgb(255, 250, 250)" onmousemove="tooltip(1, 98)" onclick="clickWhite(98)"></td><td style="padding:0;height:22px;background-color:rgb(255, 252, 252)" onmousemove="tooltip(1, 99)" onclick="clickWhite(99)"></td><td style="padding:0;height:22px;background-color:rgb(255, 255, 255)" onmousemove="tooltip(1, 100)" onclick="clickWhite(100)"></td></tr></tbody></table></div>
+  </div>
+</div>
+<div class="w3-row">
+  <div class="w3-col colorinput">
+    <div style="width:30px;float:left;">B:</div>
+    <input type="number" style="padding-left:6px;width:70px;" id="black01" oninput="setColor(this)" onchange="setColor(this)" value="0">
+  </div>
+  <div class="w3-rest colorslider">
+    <div id="blacktable"><table class="tableslider"><tbody><tr><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer0" style="display: inline;"><div>0</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer1" style="display: none;"><div>1</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer2" style="display: none;"><div>2</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer3" style="display: none;"><div>3</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer4" style="display: none;"><div>4</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer5" style="display: none;"><div>5</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer6" style="display: none;"><div>6</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer7" style="display: none;"><div>7</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer8" style="display: none;"><div>8</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer9" style="display: none;"><div>9</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer10" style="display: none;"><div>10</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer11" style="display: none;"><div>11</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer12" style="display: none;"><div>12</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer13" style="display: none;"><div>13</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer14" style="display: none;"><div>14</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer15" style="display: none;"><div>15</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer16" style="display: none;"><div>16</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer17" style="display: none;"><div>17</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer18" style="display: none;"><div>18</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer19" style="display: none;"><div>19</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer20" style="display: none;"><div>20</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer21" style="display: none;"><div>21</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer22" style="display: none;"><div>22</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer23" style="display: none;"><div>23</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer24" style="display: none;"><div>24</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer25" style="display: none;"><div>25</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer26" style="display: none;"><div>26</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer27" style="display: none;"><div>27</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer28" style="display: none;"><div>28</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer29" style="display: none;"><div>29</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer30" style="display: none;"><div>30</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer31" style="display: none;"><div>31</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer32" style="display: none;"><div>32</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer33" style="display: none;"><div>33</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer34" style="display: none;"><div>34</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer35" style="display: none;"><div>35</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer36" style="display: none;"><div>36</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer37" style="display: none;"><div>37</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer38" style="display: none;"><div>38</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer39" style="display: none;"><div>39</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer40" style="display: none;"><div>40</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer41" style="display: none;"><div>41</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer42" style="display: none;"><div>42</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer43" style="display: none;"><div>43</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer44" style="display: none;"><div>44</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer45" style="display: none;"><div>45</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer46" style="display: none;"><div>46</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer47" style="display: none;"><div>47</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer48" style="display: none;"><div>48</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer49" style="display: none;"><div>49</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer50" style="display: none;"><div>50</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer51" style="display: none;"><div>51</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer52" style="display: none;"><div>52</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer53" style="display: none;"><div>53</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer54" style="display: none;"><div>54</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer55" style="display: none;"><div>55</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer56" style="display: none;"><div>56</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer57" style="display: none;"><div>57</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer58" style="display: none;"><div>58</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer59" style="display: none;"><div>59</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer60" style="display: none;"><div>60</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer61" style="display: none;"><div>61</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer62" style="display: none;"><div>62</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer63" style="display: none;"><div>63</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer64" style="display: none;"><div>64</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer65" style="display: none;"><div>65</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer66" style="display: none;"><div>66</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer67" style="display: none;"><div>67</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer68" style="display: none;"><div>68</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer69" style="display: none;"><div>69</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer70" style="display: none;"><div>70</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer71" style="display: none;"><div>71</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer72" style="display: none;"><div>72</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer73" style="display: none;"><div>73</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer74" style="display: none;"><div>74</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer75" style="display: none;"><div>75</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer76" style="display: none;"><div>76</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer77" style="display: none;"><div>77</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer78" style="display: none;"><div>78</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer79" style="display: none;"><div>79</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer80" style="display: none;"><div>80</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer81" style="display: none;"><div>81</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer82" style="display: none;"><div>82</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer83" style="display: none;"><div>83</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer84" style="display: none;"><div>84</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer85" style="display: none;"><div>85</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer86" style="display: none;"><div>86</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer87" style="display: none;"><div>87</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer88" style="display: none;"><div>88</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer89" style="display: none;"><div>89</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer90" style="display: none;"><div>90</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer91" style="display: none;"><div>91</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer92" style="display: none;"><div>92</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer93" style="display: none;"><div>93</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer94" style="display: none;"><div>94</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer95" style="display: none;"><div>95</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer96" style="display: none;"><div>96</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer97" style="display: none;"><div>97</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer98" style="display: none;"><div>98</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer99" style="display: none;"><div>99</div><i class="fa fa-caret-down"></i></div></td><td style="position:relative;padding:0;"><div class="pointer" id="blackpointer100" style="display: none;"><div>100</div><i class="fa fa-caret-down"></i></div></td></tr><tr><td onmousemove="tooltip(2, 0)" onclick="clickBlack(0)" style="padding:0;height:22px;background-color:rgb(255, 0, 0)"></td><td onmousemove="tooltip(2, 1)" onclick="clickBlack(1)" style="padding:0;height:22px;background-color:rgb(252, 0, 0)"></td><td onmousemove="tooltip(2, 2)" onclick="clickBlack(2)" style="padding:0;height:22px;background-color:rgb(250, 0, 0)"></td><td onmousemove="tooltip(2, 3)" onclick="clickBlack(3)" style="padding:0;height:22px;background-color:rgb(247, 0, 0)"></td><td onmousemove="tooltip(2, 4)" onclick="clickBlack(4)" style="padding:0;height:22px;background-color:rgb(245, 0, 0)"></td><td onmousemove="tooltip(2, 5)" onclick="clickBlack(5)" style="padding:0;height:22px;background-color:rgb(242, 0, 0)"></td><td onmousemove="tooltip(2, 6)" onclick="clickBlack(6)" style="padding:0;height:22px;background-color:rgb(240, 0, 0)"></td><td onmousemove="tooltip(2, 7)" onclick="clickBlack(7)" style="padding:0;height:22px;background-color:rgb(237, 0, 0)"></td><td onmousemove="tooltip(2, 8)" onclick="clickBlack(8)" style="padding:0;height:22px;background-color:rgb(235, 0, 0)"></td><td onmousemove="tooltip(2, 9)" onclick="clickBlack(9)" style="padding:0;height:22px;background-color:rgb(232, 0, 0)"></td><td onmousemove="tooltip(2, 10)" onclick="clickBlack(10)" style="padding:0;height:22px;background-color:rgb(230, 0, 0)"></td><td onmousemove="tooltip(2, 11)" onclick="clickBlack(11)" style="padding:0;height:22px;background-color:rgb(227, 0, 0)"></td><td onmousemove="tooltip(2, 12)" onclick="clickBlack(12)" style="padding:0;height:22px;background-color:rgb(224, 0, 0)"></td><td onmousemove="tooltip(2, 13)" onclick="clickBlack(13)" style="padding:0;height:22px;background-color:rgb(222, 0, 0)"></td><td onmousemove="tooltip(2, 14)" onclick="clickBlack(14)" style="padding:0;height:22px;background-color:rgb(219, 0, 0)"></td><td onmousemove="tooltip(2, 15)" onclick="clickBlack(15)" style="padding:0;height:22px;background-color:rgb(217, 0, 0)"></td><td onmousemove="tooltip(2, 16)" onclick="clickBlack(16)" style="padding:0;height:22px;background-color:rgb(214, 0, 0)"></td><td onmousemove="tooltip(2, 17)" onclick="clickBlack(17)" style="padding:0;height:22px;background-color:rgb(212, 0, 0)"></td><td onmousemove="tooltip(2, 18)" onclick="clickBlack(18)" style="padding:0;height:22px;background-color:rgb(209, 0, 0)"></td><td onmousemove="tooltip(2, 19)" onclick="clickBlack(19)" style="padding:0;height:22px;background-color:rgb(207, 0, 0)"></td><td onmousemove="tooltip(2, 20)" onclick="clickBlack(20)" style="padding:0;height:22px;background-color:rgb(204, 0, 0)"></td><td onmousemove="tooltip(2, 21)" onclick="clickBlack(21)" style="padding:0;height:22px;background-color:rgb(201, 0, 0)"></td><td onmousemove="tooltip(2, 22)" onclick="clickBlack(22)" style="padding:0;height:22px;background-color:rgb(199, 0, 0)"></td><td onmousemove="tooltip(2, 23)" onclick="clickBlack(23)" style="padding:0;height:22px;background-color:rgb(196, 0, 0)"></td><td onmousemove="tooltip(2, 24)" onclick="clickBlack(24)" style="padding:0;height:22px;background-color:rgb(194, 0, 0)"></td><td onmousemove="tooltip(2, 25)" onclick="clickBlack(25)" style="padding:0;height:22px;background-color:rgb(191, 0, 0)"></td><td onmousemove="tooltip(2, 26)" onclick="clickBlack(26)" style="padding:0;height:22px;background-color:rgb(189, 0, 0)"></td><td onmousemove="tooltip(2, 27)" onclick="clickBlack(27)" style="padding:0;height:22px;background-color:rgb(186, 0, 0)"></td><td onmousemove="tooltip(2, 28)" onclick="clickBlack(28)" style="padding:0;height:22px;background-color:rgb(184, 0, 0)"></td><td onmousemove="tooltip(2, 29)" onclick="clickBlack(29)" style="padding:0;height:22px;background-color:rgb(181, 0, 0)"></td><td onmousemove="tooltip(2, 30)" onclick="clickBlack(30)" style="padding:0;height:22px;background-color:rgb(179, 0, 0)"></td><td onmousemove="tooltip(2, 31)" onclick="clickBlack(31)" style="padding:0;height:22px;background-color:rgb(176, 0, 0)"></td><td onmousemove="tooltip(2, 32)" onclick="clickBlack(32)" style="padding:0;height:22px;background-color:rgb(173, 0, 0)"></td><td onmousemove="tooltip(2, 33)" onclick="clickBlack(33)" style="padding:0;height:22px;background-color:rgb(171, 0, 0)"></td><td onmousemove="tooltip(2, 34)" onclick="clickBlack(34)" style="padding:0;height:22px;background-color:rgb(168, 0, 0)"></td><td onmousemove="tooltip(2, 35)" onclick="clickBlack(35)" style="padding:0;height:22px;background-color:rgb(166, 0, 0)"></td><td onmousemove="tooltip(2, 36)" onclick="clickBlack(36)" style="padding:0;height:22px;background-color:rgb(163, 0, 0)"></td><td onmousemove="tooltip(2, 37)" onclick="clickBlack(37)" style="padding:0;height:22px;background-color:rgb(161, 0, 0)"></td><td onmousemove="tooltip(2, 38)" onclick="clickBlack(38)" style="padding:0;height:22px;background-color:rgb(158, 0, 0)"></td><td onmousemove="tooltip(2, 39)" onclick="clickBlack(39)" style="padding:0;height:22px;background-color:rgb(156, 0, 0)"></td><td onmousemove="tooltip(2, 40)" onclick="clickBlack(40)" style="padding:0;height:22px;background-color:rgb(153, 0, 0)"></td><td onmousemove="tooltip(2, 41)" onclick="clickBlack(41)" style="padding:0;height:22px;background-color:rgb(150, 0, 0)"></td><td onmousemove="tooltip(2, 42)" onclick="clickBlack(42)" style="padding:0;height:22px;background-color:rgb(148, 0, 0)"></td><td onmousemove="tooltip(2, 43)" onclick="clickBlack(43)" style="padding:0;height:22px;background-color:rgb(145, 0, 0)"></td><td onmousemove="tooltip(2, 44)" onclick="clickBlack(44)" style="padding:0;height:22px;background-color:rgb(143, 0, 0)"></td><td onmousemove="tooltip(2, 45)" onclick="clickBlack(45)" style="padding:0;height:22px;background-color:rgb(140, 0, 0)"></td><td onmousemove="tooltip(2, 46)" onclick="clickBlack(46)" style="padding:0;height:22px;background-color:rgb(138, 0, 0)"></td><td onmousemove="tooltip(2, 47)" onclick="clickBlack(47)" style="padding:0;height:22px;background-color:rgb(135, 0, 0)"></td><td onmousemove="tooltip(2, 48)" onclick="clickBlack(48)" style="padding:0;height:22px;background-color:rgb(133, 0, 0)"></td><td onmousemove="tooltip(2, 49)" onclick="clickBlack(49)" style="padding:0;height:22px;background-color:rgb(130, 0, 0)"></td><td onmousemove="tooltip(2, 50)" onclick="clickBlack(50)" style="padding:0;height:22px;background-color:rgb(128, 0, 0)"></td><td onmousemove="tooltip(2, 51)" onclick="clickBlack(51)" style="padding:0;height:22px;background-color:rgb(125, 0, 0)"></td><td onmousemove="tooltip(2, 52)" onclick="clickBlack(52)" style="padding:0;height:22px;background-color:rgb(122, 0, 0)"></td><td onmousemove="tooltip(2, 53)" onclick="clickBlack(53)" style="padding:0;height:22px;background-color:rgb(120, 0, 0)"></td><td onmousemove="tooltip(2, 54)" onclick="clickBlack(54)" style="padding:0;height:22px;background-color:rgb(117, 0, 0)"></td><td onmousemove="tooltip(2, 55)" onclick="clickBlack(55)" style="padding:0;height:22px;background-color:rgb(115, 0, 0)"></td><td onmousemove="tooltip(2, 56)" onclick="clickBlack(56)" style="padding:0;height:22px;background-color:rgb(112, 0, 0)"></td><td onmousemove="tooltip(2, 57)" onclick="clickBlack(57)" style="padding:0;height:22px;background-color:rgb(110, 0, 0)"></td><td onmousemove="tooltip(2, 58)" onclick="clickBlack(58)" style="padding:0;height:22px;background-color:rgb(107, 0, 0)"></td><td onmousemove="tooltip(2, 59)" onclick="clickBlack(59)" style="padding:0;height:22px;background-color:rgb(105, 0, 0)"></td><td onmousemove="tooltip(2, 60)" onclick="clickBlack(60)" style="padding:0;height:22px;background-color:rgb(102, 0, 0)"></td><td onmousemove="tooltip(2, 61)" onclick="clickBlack(61)" style="padding:0;height:22px;background-color:rgb(99, 0, 0)"></td><td onmousemove="tooltip(2, 62)" onclick="clickBlack(62)" style="padding:0;height:22px;background-color:rgb(97, 0, 0)"></td><td onmousemove="tooltip(2, 63)" onclick="clickBlack(63)" style="padding:0;height:22px;background-color:rgb(94, 0, 0)"></td><td onmousemove="tooltip(2, 64)" onclick="clickBlack(64)" style="padding:0;height:22px;background-color:rgb(92, 0, 0)"></td><td onmousemove="tooltip(2, 65)" onclick="clickBlack(65)" style="padding:0;height:22px;background-color:rgb(89, 0, 0)"></td><td onmousemove="tooltip(2, 66)" onclick="clickBlack(66)" style="padding:0;height:22px;background-color:rgb(87, 0, 0)"></td><td onmousemove="tooltip(2, 67)" onclick="clickBlack(67)" style="padding:0;height:22px;background-color:rgb(84, 0, 0)"></td><td onmousemove="tooltip(2, 68)" onclick="clickBlack(68)" style="padding:0;height:22px;background-color:rgb(82, 0, 0)"></td><td onmousemove="tooltip(2, 69)" onclick="clickBlack(69)" style="padding:0;height:22px;background-color:rgb(79, 0, 0)"></td><td onmousemove="tooltip(2, 70)" onclick="clickBlack(70)" style="padding:0;height:22px;background-color:rgb(77, 0, 0)"></td><td onmousemove="tooltip(2, 71)" onclick="clickBlack(71)" style="padding:0;height:22px;background-color:rgb(74, 0, 0)"></td><td onmousemove="tooltip(2, 72)" onclick="clickBlack(72)" style="padding:0;height:22px;background-color:rgb(71, 0, 0)"></td><td onmousemove="tooltip(2, 73)" onclick="clickBlack(73)" style="padding:0;height:22px;background-color:rgb(69, 0, 0)"></td><td onmousemove="tooltip(2, 74)" onclick="clickBlack(74)" style="padding:0;height:22px;background-color:rgb(66, 0, 0)"></td><td onmousemove="tooltip(2, 75)" onclick="clickBlack(75)" style="padding:0;height:22px;background-color:rgb(64, 0, 0)"></td><td onmousemove="tooltip(2, 76)" onclick="clickBlack(76)" style="padding:0;height:22px;background-color:rgb(61, 0, 0)"></td><td onmousemove="tooltip(2, 77)" onclick="clickBlack(77)" style="padding:0;height:22px;background-color:rgb(59, 0, 0)"></td><td onmousemove="tooltip(2, 78)" onclick="clickBlack(78)" style="padding:0;height:22px;background-color:rgb(56, 0, 0)"></td><td onmousemove="tooltip(2, 79)" onclick="clickBlack(79)" style="padding:0;height:22px;background-color:rgb(54, 0, 0)"></td><td onmousemove="tooltip(2, 80)" onclick="clickBlack(80)" style="padding:0;height:22px;background-color:rgb(51, 0, 0)"></td><td onmousemove="tooltip(2, 81)" onclick="clickBlack(81)" style="padding:0;height:22px;background-color:rgb(48, 0, 0)"></td><td onmousemove="tooltip(2, 82)" onclick="clickBlack(82)" style="padding:0;height:22px;background-color:rgb(46, 0, 0)"></td><td onmousemove="tooltip(2, 83)" onclick="clickBlack(83)" style="padding:0;height:22px;background-color:rgb(43, 0, 0)"></td><td onmousemove="tooltip(2, 84)" onclick="clickBlack(84)" style="padding:0;height:22px;background-color:rgb(41, 0, 0)"></td><td onmousemove="tooltip(2, 85)" onclick="clickBlack(85)" style="padding:0;height:22px;background-color:rgb(38, 0, 0)"></td><td onmousemove="tooltip(2, 86)" onclick="clickBlack(86)" style="padding:0;height:22px;background-color:rgb(36, 0, 0)"></td><td onmousemove="tooltip(2, 87)" onclick="clickBlack(87)" style="padding:0;height:22px;background-color:rgb(33, 0, 0)"></td><td onmousemove="tooltip(2, 88)" onclick="clickBlack(88)" style="padding:0;height:22px;background-color:rgb(31, 0, 0)"></td><td onmousemove="tooltip(2, 89)" onclick="clickBlack(89)" style="padding:0;height:22px;background-color:rgb(28, 0, 0)"></td><td onmousemove="tooltip(2, 90)" onclick="clickBlack(90)" style="padding:0;height:22px;background-color:rgb(25, 0, 0)"></td><td onmousemove="tooltip(2, 91)" onclick="clickBlack(91)" style="padding:0;height:22px;background-color:rgb(23, 0, 0)"></td><td onmousemove="tooltip(2, 92)" onclick="clickBlack(92)" style="padding:0;height:22px;background-color:rgb(20, 0, 0)"></td><td onmousemove="tooltip(2, 93)" onclick="clickBlack(93)" style="padding:0;height:22px;background-color:rgb(18, 0, 0)"></td><td onmousemove="tooltip(2, 94)" onclick="clickBlack(94)" style="padding:0;height:22px;background-color:rgb(15, 0, 0)"></td><td onmousemove="tooltip(2, 95)" onclick="clickBlack(95)" style="padding:0;height:22px;background-color:rgb(13, 0, 0)"></td><td onmousemove="tooltip(2, 96)" onclick="clickBlack(96)" style="padding:0;height:22px;background-color:rgb(10, 0, 0)"></td><td onmousemove="tooltip(2, 97)" onclick="clickBlack(97)" style="padding:0;height:22px;background-color:rgb(8, 0, 0)"></td><td onmousemove="tooltip(2, 98)" onclick="clickBlack(98)" style="padding:0;height:22px;background-color:rgb(5, 0, 0)"></td><td onmousemove="tooltip(2, 99)" onclick="clickBlack(99)" style="padding:0;height:22px;background-color:rgb(3, 0, 0)"></td><td onmousemove="tooltip(2, 100)" onclick="clickBlack(100)" style="padding:0;height:22px;background-color:rgb(0, 0, 0)"></td></tr></tbody></table></div>
+  </div>
+</div>
+<div id="linktocp"><hr style="border-color:#dfdfdf"><p><a href="colors_picker.html?colorhex=ff0000">Use this color in our Color Picker</a></p></div>            
+</div>
+<script>
+function submitOnEnter(e) {
+    keyboardKey = e.which || e.keyCode;
+    if (keyboardKey == 13) {
+        setFullColor();
+    }
+}
+function clickHue(hue) {
+    var h = document.getElementById("hue01");
+    h.value = hue;
+    setColor(h);
+}
+function clickWhite(white) {
+    var w = document.getElementById("white01");
+    w.value = white;
+    setColor(w);
+}
+function clickBlack(black) {
+    var b = document.getElementById("black01");
+    b.value = black;
+    setColor(b);
+}
+function drawHueTable(hue) {
+    var x, i, n, c, ncol;
+    x = "<table class='tableslider'>"
+    x += "<tr>";
+    c = "R";
+    n = -1;
+    for (i = 0; i < 60; i++) {
+        if (i == 10) {c = "Y"; n = -1; }
+        if (i == 20) {c = "G"; n = -1; }
+        if (i == 30) {c = "C"; n = -1; }
+        if (i == 40) {c = "B"; n = -1; }
+        if (i == 50) {c = "M"; n = -1; }
+        n++;
+        ncol = c + (n * 10);
+        if (n == 0) {ncol = c; }
+        x += "<td style='position:relative;padding:0;'><div class='pointer hue' id='huepointer" + ncol + "'><div>" + ncol + "</div><i class='fa fa-caret-down'></i></div></td>";
+    }
+    x += "</tr>";
+    x += "<tr>";
+    c = "R";
+    n = -1;
+    for (i = 0; i < 60; i++) {
+        if (i == 10) {c = "Y"; n = -1; }
+        if (i == 20) {c = "G"; n = -1; }
+        if (i == 30) {c = "C"; n = -1; }
+        if (i == 40) {c = "B"; n = -1; }
+        if (i == 50) {c = "M"; n = -1; }
+        n++;
+        ncol = c + (n * 10);
+        if (n == 0) {ncol = c; }
+        x += "<td style='height:22px;padding:0;background-color:hsl(" + (i * 6) + ",100%,50%)' onmousemove='tooltip(0, \"" + ncol + "\")' onclick='clickHue(\"" + ncol + "\")'></td>";
+    }
+    x += "</tr>";
+    x += "</table>";
+    document.getElementById("huetable").innerHTML = x;
+}
+function drawWhiteTable(hue) {
+    var x, i;
+    x = "<table class='tableslider'>"
+    x += "<tr>";
+    for (i = 0; i <= 100; i++) {
+        x += "<td style='position:relative;padding:0;'><div class='pointer' id='whitepointer" + i + "'><div>" + i + "</div><i class='fa fa-caret-down'></i></div></td>";
+    }
+    x += "</tr>";
+    x += "<tr>";
+    for (i = 0; i <= 100; i++) {
+        x += "<td style='padding:0;height:22px;background-color:" + w3color("hwb(" + hue + ", " + i + "%, 0%)").toRgbString() + "' onmousemove='tooltip(1, " + i + ")' onclick='clickWhite(" + i + ")'></td>";
+    }
+    x += "</tr></table>";
+    document.getElementById("whitetable").innerHTML = x;
+}
+function drawBlackTable(hue) {
+    var x, i;
+    x = "<table class='tableslider'>"
+    x += "<tr>";
+    for (i = 0; i <= 100; i++) {
+        x += "<td style='position:relative;padding:0;'><div class='pointer' id='blackpointer" + i + "'><div>" + i + "</div><i class='fa fa-caret-down'></i></div></td>";
+    }
+    x += "</tr>";
+    x += "<tr>";
+    for (i = 0; i <= 100; i++) {
+        x += "<td onmousemove='tooltip(2, " + i + ")' onclick='clickBlack(" + i + ")' style='padding:0;height:22px;background-color:" + w3color("hwb(" + hue + ", 0%, " + i + "%)").toRgbString() + "'></td>";
+    }
+    x += "</tr></table>";
+    document.getElementById("blacktable").innerHTML = x;
+}
+</script>
+
+<hr>
+
+<h2>Natural Colors (NCol)</h2>
+<p>Natural colors (NCol) is an initiative from W3Schools.</p>
+<p>The system is designed to make it easier to select HTML colors.</p>
+<p>NCol specifies colors using a color letter with a number to specify the distance (in percent) from the color.</p>
+<p>R30 means 30% away from <strong>Red</strong> , moving towards <strong>Yellow</strong>. (In other words: Red with 30% Yellow)</p>
+
+<table class="ws-table-all">
+<tbody><tr><th>Letter</th><th>Color</th><th>Hues</th></tr>
+<tr><td>R</td><td>Red</td><td>
+<div class="w3-tag" style="width:75px;height:25px;background-color:rgb(255,0,0)">R</div>
+<div class="w3-tag" style="width:75px;height:25px;background-color:rgb(255,64,0)">R25</div>
+<div class="w3-tag" style="width:75px;height:25px;background-color:rgb(255,128,0)">R50</div>
+<div class="w3-tag" style="width:75px;height:25px;background-color:rgb(255,191,0)">R75</div>
+</td></tr>
+<tr><td>Y</td><td>Yellow</td><td>
+<div class="w3-tag" style="width:75px;height:25px;background-color:rgb(255,255,0)">Y</div>
+<div class="w3-tag" style="width:75px;height:25px;background-color:rgb(191,255,0)">Y25</div>
+<div class="w3-tag" style="width:75px;height:25px;background-color:rgb(128,255,0)">Y50</div>
+<div class="w3-tag" style="width:75px;height:25px;background-color:rgb(64,255,0)">Y75</div>
+</td></tr>
+<tr><td>G</td><td>Green</td><td>
+<div class="w3-tag" style="width:75px;height:25px;background-color:rgb(0,255,0)">G</div>
+<div class="w3-tag" style="width:75px;height:25px;background-color:rgb(0,255,64)">G25</div>
+<div class="w3-tag" style="width:75px;height:25px;background-color:rgb(0,255,128)">G50</div>
+<div class="w3-tag" style="width:75px;height:25px;background-color:rgb(0,255,191)">G75</div>
+</td></tr>
+<tr><td>C</td><td>Cyan</td><td>
+<div class="w3-tag" style="width:75px;height:25px;background-color:rgb(0,255,255)">C</div>
+<div class="w3-tag" style="width:75px;height:25px;background-color:rgb(0,191,255)">C25</div>
+<div class="w3-tag" style="width:75px;height:25px;background-color:rgb(0,128,255)">C50</div>
+<div class="w3-tag" style="width:75px;height:25px;background-color:rgb(0,64,255)">C75</div>
+</td></tr>
+<tr><td>B</td><td>Blue</td><td>
+<div class="w3-tag" style="width:75px;height:25px;background-color:rgb(0,0,255)">B</div>
+<div class="w3-tag" style="width:75px;height:25px;background-color:rgb(64,0,255)">B25</div>
+<div class="w3-tag" style="width:75px;height:25px;background-color:rgb(128,0,255)">B50</div>
+<div class="w3-tag" style="width:75px;height:25px;background-color:rgb(191,0,255)">B75</div>
+</td></tr>
+<tr><td>M</td><td>Magenta</td><td>
+<div class="w3-tag" style="width:75px;height:25px;background-color:rgb(255,0,255)">M</div>
+<div class="w3-tag" style="width:75px;height:25px;background-color:rgb(255,0,191)">M25</div>
+<div class="w3-tag" style="width:75px;height:25px;background-color:rgb(255,0,128)">M50</div>
+<div class="w3-tag" style="width:75px;height:25px;background-color:rgb(255,0,64)">M75</div>
+</td></tr>
+</tbody></table>
+
+
+<table>
+<tbody><tr>
+<td>R</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Y</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>G</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>C</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>B</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>M</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td data-w3-color="R" style="background-color: rgb(255, 0, 0);">&nbsp;</td>
+<td data-w3-color="R10" style="background-color: rgb(255, 26, 0);">&nbsp;</td>
+<td data-w3-color="R20" style="background-color: rgb(255, 51, 0);">&nbsp;</td>
+<td data-w3-color="R30" style="background-color: rgb(255, 77, 0);">&nbsp;</td>
+<td data-w3-color="R40" style="background-color: rgb(255, 102, 0);">&nbsp;</td>
+<td data-w3-color="R50" style="background-color: rgb(255, 128, 0);">&nbsp;</td>
+<td data-w3-color="R60" style="background-color: rgb(255, 153, 0);">&nbsp;</td>
+<td data-w3-color="R70" style="background-color: rgb(255, 179, 0);">&nbsp;</td>
+<td data-w3-color="R80" style="background-color: rgb(255, 204, 0);">&nbsp;</td>
+<td data-w3-color="R90" style="background-color: rgb(255, 230, 0);">&nbsp;</td>
+<td data-w3-color="Y" style="background-color: rgb(255, 255, 0);">&nbsp;</td>
+<td data-w3-color="Y10" style="background-color: rgb(229, 255, 0);">&nbsp;</td>
+<td data-w3-color="Y20" style="background-color: rgb(204, 255, 0);">&nbsp;</td>
+<td data-w3-color="Y30" style="background-color: rgb(179, 255, 0);">&nbsp;</td>
+<td data-w3-color="Y40" style="background-color: rgb(153, 255, 0);">&nbsp;</td>
+<td data-w3-color="Y50" style="background-color: rgb(128, 255, 0);">&nbsp;</td>
+<td data-w3-color="Y60" style="background-color: rgb(102, 255, 0);">&nbsp;</td>
+<td data-w3-color="Y70" style="background-color: rgb(76, 255, 0);">&nbsp;</td>
+<td data-w3-color="Y80" style="background-color: rgb(51, 255, 0);">&nbsp;</td>
+<td data-w3-color="Y90" style="background-color: rgb(26, 255, 0);">&nbsp;</td>
+<td data-w3-color="G" style="background-color: rgb(0, 255, 0);">&nbsp;</td>
+<td data-w3-color="G10" style="background-color: rgb(0, 255, 26);">&nbsp;</td>
+<td data-w3-color="G20" style="background-color: rgb(0, 255, 51);">&nbsp;</td>
+<td data-w3-color="G30" style="background-color: rgb(0, 255, 76);">&nbsp;</td>
+<td data-w3-color="G40" style="background-color: rgb(0, 255, 102);">&nbsp;</td>
+<td data-w3-color="G50" style="background-color: rgb(0, 255, 128);">&nbsp;</td>
+<td data-w3-color="G60" style="background-color: rgb(0, 255, 153);">&nbsp;</td>
+<td data-w3-color="G70" style="background-color: rgb(0, 255, 179);">&nbsp;</td>
+<td data-w3-color="G80" style="background-color: rgb(0, 255, 204);">&nbsp;</td>
+<td data-w3-color="G90" style="background-color: rgb(0, 255, 229);">&nbsp;</td>
+<td data-w3-color="C" style="background-color: rgb(0, 255, 255);">&nbsp;</td>
+<td data-w3-color="C10" style="background-color: rgb(0, 229, 255);">&nbsp;</td>
+<td data-w3-color="C20" style="background-color: rgb(0, 204, 255);">&nbsp;</td>
+<td data-w3-color="C30" style="background-color: rgb(0, 179, 255);">&nbsp;</td>
+<td data-w3-color="C40" style="background-color: rgb(0, 153, 255);">&nbsp;</td>
+<td data-w3-color="C50" style="background-color: rgb(0, 128, 255);">&nbsp;</td>
+<td data-w3-color="C60" style="background-color: rgb(0, 102, 255);">&nbsp;</td>
+<td data-w3-color="C70" style="background-color: rgb(0, 76, 255);">&nbsp;</td>
+<td data-w3-color="C80" style="background-color: rgb(0, 51, 255);">&nbsp;</td>
+<td data-w3-color="C90" style="background-color: rgb(0, 26, 255);">&nbsp;</td>
+<td data-w3-color="B" style="background-color: rgb(0, 0, 255);">&nbsp;</td>
+<td data-w3-color="B10" style="background-color: rgb(25, 0, 255);">&nbsp;</td>
+<td data-w3-color="B20" style="background-color: rgb(51, 0, 255);">&nbsp;</td>
+<td data-w3-color="B30" style="background-color: rgb(76, 0, 255);">&nbsp;</td>
+<td data-w3-color="B40" style="background-color: rgb(102, 0, 255);">&nbsp;</td>
+<td data-w3-color="B50" style="background-color: rgb(128, 0, 255);">&nbsp;</td>
+<td data-w3-color="B60" style="background-color: rgb(153, 0, 255);">&nbsp;</td>
+<td data-w3-color="B70" style="background-color: rgb(179, 0, 255);">&nbsp;</td>
+<td data-w3-color="B80" style="background-color: rgb(204, 0, 255);">&nbsp;</td>
+<td data-w3-color="B90" style="background-color: rgb(230, 0, 255);">&nbsp;</td>
+<td data-w3-color="M" style="background-color: rgb(255, 0, 255);">&nbsp;</td>
+<td data-w3-color="M10" style="background-color: rgb(255, 0, 230);">&nbsp;</td>
+<td data-w3-color="M20" style="background-color: rgb(255, 0, 204);">&nbsp;</td>
+<td data-w3-color="M30" style="background-color: rgb(255, 0, 179);">&nbsp;</td>
+<td data-w3-color="M40" style="background-color: rgb(255, 0, 153);">&nbsp;</td>
+<td data-w3-color="M50" style="background-color: rgb(255, 0, 128);">&nbsp;</td>
+<td data-w3-color="M60" style="background-color: rgb(255, 0, 102);">&nbsp;</td>
+<td data-w3-color="M70" style="background-color: rgb(255, 0, 76);">&nbsp;</td>
+<td data-w3-color="M80" style="background-color: rgb(255, 0, 51);">&nbsp;</td>
+<td data-w3-color="M90" style="background-color: rgb(255, 0, 25);">&nbsp;</td>
+</tr></tbody></table>
+
+<p>Color and distance can also be given in hues (0-360):</p>
+
+<table class="ws-table-all">
+<tbody><tr>
+<td style="width:16.67%;color:white;background-color:rgb(255,0,0)">R = 000</td>
+<td style="width:16.67%;background-color:rgb(255,255,0)">Y = 060</td>
+<td style="width:16.67%;background-color:rgb(0,255,0)">G = 120</td>
+<td style="width:16.67%;background-color:rgb(0,255,255)">C = 180</td>
+<td style="width:16.67%;color:white;background-color:rgb(0,0,255)">B = 240</td>
+<td style="width:16.67%;background-color:rgb(255,0,255)">M = 300</td>
+</tr>
+</tbody></table>
+
+<hr>
+<h2>Why NCol?</h2>
+
+<p>Trying to explain colors using RGB or HEX notation is very difficult.</p>
+<p>Can you tell what color rgb(199,21,133) is?</p>
+<p>RGB is based on how to physically produce colors by mixing light sources.</p>
+<p><strong>NCol is based on what colors look like to the human eye. </strong> </p>
+<p>Because of this, NCol makes it much easier to describe colors. </p>
+<p>Natural colors were first described by Karl Ewald Konstantin Hering (Germany 
+1834 - 1918).</p>
+
+
+<script>
+w3SetColorsByAttribute();
+var btnclck = false;
+if (window.addEventListener) {              
+    window.addEventListener("mousedown", function () {btnclck = true; });
+} else if (window.attachEvent) {                 
+    window.attachEvent("onmousedown", function () {btnclck = true; });
+}
+if (window.addEventListener) {              
+    window.addEventListener("mouseup", function () {btnclck = false; });
+} else if (window.attachEvent) {                 
+    window.attachEvent("onmouseup", function () {btnclck = false; });
+}
+function tooltip(e, n) {
+    var x;
+    if (btnclck) {
+        if (e == 0) { x = document.getElementById("hue01"); }
+        if (e == 1) { x = document.getElementById("white01"); }
+        if (e == 2) { x = document.getElementById("black01"); }                
+        x.value = n;
+        setColor(x);
+    }
+}
+
+function setColor(elmnt) {
+var ele, col, ncol, h, w, b, rgb, i, c, n, hue, step;
+h = document.getElementById("hue01");
+w = document.getElementById("white01");
+b = document.getElementById("black01");
+if (parseInt(elmnt.value) < 0) {elmnt.value = "0";}
+if (Number(h.value)) {
+    hue = h.value;
+} else {
+    step = 0;
+    c = h.value.substr(0, 1).toUpperCase();
+    if (c == "") {hue = 0; c = ""; n = ""; }
+    if (c == "R") {hue = 0; }
+    if (c == "Y") {hue = 60; }
+    if (c == "G") {hue = 120; }
+    if (c == "C") {hue = 180; }
+    if (c == "B") {hue = 240; }
+    if (c == "M") {hue = 300; }
+    if (hue == undefined) {
+        c = "R";
+        hue = 0;
+    }
+    n = h.value.substr(1);
+    if (n == "") {
+        step = 0;
+    } else {
+        if (n < 0) {n = 0; }
+        if (n > 99) {n = 99; }
+        if (!Number(n)) {
+            hue = 0;
+            n = "";
+        } else { 
+            step = Number(n);
+        }
+    }
+    h.value = c.toUpperCase() + n;
+    hue = parseInt(hue + (step * 0.6));
+}
+if (elmnt.id == "hue01") {
+    if (parseInt(elmnt.value) > 360) {elmnt.value = "360";}
+} else {
+    if (parseInt(elmnt.value) > 100) {elmnt.value = "100";}
+}
+if (elmnt.id == "white01") {
+    if (parseInt(w.value) + parseInt(b.value) > 100) {
+        b.value = 100 - parseInt(w.value);
+    }
+}
+if (elmnt.id == "black01") {
+    if (parseInt(w.value) + parseInt(b.value) > 100) {
+        w.value = 100 - parseInt(b.value);
+    }
+}
+rgb = w3color("ncol(" + h.value + ", " + w.value + "%, " + b.value + "%)");
+document.getElementById("result01").style.backgroundColor = rgb.toRgbString();
+document.getElementById("hwb01").value = rgb.toNcolString();
+document.getElementById("rgb01").innerHTML = rgb.toRgbString();
+document.getElementById("hex01").innerHTML = rgb.toHexString();
+document.getElementById("hsl01").innerHTML = rgb.toHslString();
+c = "R";
+n = -1;
+for (i = 0; i < 60; i++) {
+    if (i == 10) {c = "Y"; n = -1; }
+    if (i == 20) {c = "G"; n = -1; }
+    if (i == 30) {c = "C"; n = -1; }
+    if (i == 40) {c = "B"; n = -1; }
+    if (i == 50) {c = "M"; n = -1; }
+    n++;
+    ncol = c + (n * 10);
+    if (n == 0) {ncol = c; }
+    if (document.getElementById("huepointer" + ncol)) {document.getElementById("huepointer" + ncol).style.display = "none"; }
+}
+drawWhiteTable(hue);
+drawBlackTable(hue);
+for (i = 0; i <= 100; i++) {
+    if (document.getElementById("whitepointer" + i)) {document.getElementById("whitepointer" + i).style.display = "none"; }
+    if (document.getElementById("blackpointer" + i)) {document.getElementById("blackpointer" + i).style.display = "none"; }    
+}
+if (document.getElementById("huepointer" + h.value)) {document.getElementById("huepointer" + h.value).style.display = "inline"; }
+if (document.getElementById("whitepointer" + w.value)) {document.getElementById("whitepointer" + w.value).style.display = "inline"; }
+if (document.getElementById("blackpointer" + b.value)) {document.getElementById("blackpointer" + b.value).style.display = "inline"; }
+document.getElementById("linktocp").innerHTML = "<hr style='border-color:#dfdfdf'><p><a href='colors_picker.html?colorhex=" + rgb.toHexString().substr(1) + "'>Use this color in our Color Picker</a></p>";
+}
+
+drawWhiteTable(0);
+drawHueTable(0);
+drawBlackTable(0);
+function setFullColor() {
+    var color = w3color(document.getElementById("hwb01").value);
+    var ncol = color.toNcol();
+    document.getElementById("hue01").value = ncol.ncol;
+    document.getElementById("white01").value = (ncol.w * 100).toFixed(0);
+    document.getElementById("black01").value = (ncol.b * 100).toFixed(0);
+    setColor(document.getElementById("hue01"));
+}
+color = w3color("ff0000");
+document.getElementById("hwb01").value = color.toNcolString();
+setFullColor();
+
+</script>
+
+</div>
